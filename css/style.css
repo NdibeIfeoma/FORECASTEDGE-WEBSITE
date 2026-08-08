@@ -47,7 +47,7 @@
   }
   .logo{
     display:flex; align-items:center; gap:9px;
-    font-family:'Fraunces', serif; font-weight:600; font-size:19px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:20px;
     text-decoration:none; color:var(--ink);
   }
   .logo-mark{width:20px; height:20px; flex-shrink:0;}
