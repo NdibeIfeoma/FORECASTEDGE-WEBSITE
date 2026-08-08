@@ -33,11 +33,28 @@ document.getElementById('year').textContent = new Date().getFullYear();
     }, 750);
   });
 
-  // contact form (client-side only demo)
+  // contact form — actually submits to Netlify Forms
   document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
+    const form = this;
     const msg = document.getElementById('formMsg');
-    msg.textContent = "Thanks — we've received your request and will follow up within 1 business day.";
-    msg.classList.add('show','success');
-    this.reset();
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
+      msg.textContent = "Thanks — we've received your request and will follow up within 1 business day.";
+      msg.classList.add('show','success');
+      form.reset();
+    })
+    .catch(() => {
+      msg.textContent = "Something went wrong — please try again or email us directly.";
+      msg.classList.add('show');
+      msg.style.background = '#FBE4E1';
+      msg.style.color = '#B3392B';
+      msg.style.border = '1px solid #B3392B';
+    });
   });
