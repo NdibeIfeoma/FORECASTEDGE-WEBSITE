@@ -1,1 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForecastEdge — Inventory forecasting for small e-commerce retailers</title>
+<meta name="description" content="Inventory forecasts with real confidence intervals — not just a best guess. Built for small e-commerce sellers, no data science team required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <svg class="logo-mark" viewBox="0 0 20 20" fill="none">
+        <path d="M2 15L7 8L11 12L18 3" stroke="#1E9E8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M11 12L18 3" stroke="#0E2233" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 3.2"/>
+      </svg>
+      ForecastEdge
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#how-it-works">Methodology</a></li>
+      <li><a href="#use-cases">Use cases</a></li>
+      <li><a href="#success-stories">How it helps</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request a demo</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0E2233" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Inventory forecasting for small e-commerce retailers</div>
+        <h1>Know how much stock to order — before you order it.</h1>
+        <p class="lede">ForecastEdge connects to your Shopify or WooCommerce store and predicts exactly how much of each product you'll sell next month — with a confidence range, so you know how much buffer to actually carry.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Get a free forecast</a>
+          <a href="#how-it-works" class="btn-secondary">See the methodology</a>
+        </div>
+        <div class="hero-note">No data science team required — no card required to try it.</div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-head">
+          <div>
+            <span class="label">Next 30-day demand</span><br>
+            <span class="value">1,240 units <span style="color:#1E9E8C; font-size:14px;">↑ 12.4%</span></span>
+          </div>
+          <span class="label">confidence: 90%</span>
+        </div>
+        <svg viewBox="0 0 460 200" width="100%" height="200" id="forecastChart">
+          <line class="divider-line" x1="260" y1="10" x2="260" y2="180"/>
+          <text x="264" y="24" font-family="IBM Plex Mono" font-size="10" fill="#3D5266">forecast →</text>
+          <path class="band-path" id="bandPath" d="M260,110 L260,110 L460,110 L460,110 Z"/>
+          <path class="actual-path" id="actualPath" d="M20,150 L20,150"/>
+          <path class="forecast-path" id="forecastPath" d="M260,100 L260,100"/>
+          <circle class="dot" cx="260" cy="100" r="3.5"/>
+        </svg>
+        <div class="legend">
+          <div class="legend-item"><span class="swatch" style="background:#0E2233;"></span>Actual</div>
+          <div class="legend-item"><span class="swatch" style="background:#1E9E8C; border-top:2px dashed #1E9E8C; height:0;"></span>Forecast</div>
+          <div class="legend-item"><span class="swatch" style="background:#BFE3DD;"></span>90% confidence band</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Most small retailers still order stock by gut feel, because hiring a statistician was never realistic at their size.</h2>
+        <p>Demand forecasting has always required a statistician on staff. That's expensive, slow to hire for, and hard to justify until you're already big. So most small e-commerce sellers guess, and the guesses cost real money.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="num">01</div>
+          <h3>Cash tied up in overstock</h3>
+          <p>Without a real demand model, reorder decisions default to instinct — locking up cash in products that sell slowly, or not at all.</p>
+        </div>
+        <div class="problem-card">
+          <div class="num">02</div>
+          <h3>Stockouts during your best-selling weeks</h3>
+          <p>Underordering a popular SKU (Stock Keeping Unit) means lost sales exactly when demand is highest — and customers who don't come back to check again.</p>
+        </div>
+        <div class="problem-card">
+          <div class="num">03</div>
+          <h3>No sense of how much buffer is enough</h3>
+          <p>A single-number reorder guess hides the real risk. You're never sure if you're ordering too much "just in case," or not enough.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS / METHODOLOGY -->
+  <section id="how-it-works">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How a ForecastEdge reorder forecast actually gets built</h2>
+        <p>No black box. Every forecast is built on established statistical methods, and every output tells you not just what we predict, but certainty.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>Connect your store</h3>
+          <p>Link your Shopify or WooCommerce store (or upload a sales export). Historical per-SKU sales history — you keep ownership of your data at every step.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>We model each product's demand</h3>
+          <p>Time-series analysis fitted to each SKU's own pattern — seasonality, trend, and promotional spikes — not a generic template applied to every product.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>Get a reorder number with a confidence range</h3>
+          <p>You receive a plain-language "order this many units" figure plus the statistical range it's likely to fall within — so you know how much buffer to actually carry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD DETAIL -->
+  <section class="band band-alt">
+    <div class="wrap method-grid">
+      <div>
+        <h2 style="font-size:28px; margin-bottom:20px;">Built on methods statisticians actually trust</h2>
+        <ul class="method-list">
+          <li><strong>Time series decomposition</strong> separates real trend and seasonality from noise, instead of overreacting to whatever happened last month.</li>
+          <li><strong>Regression modeling</strong> accounts for the outside factors that move your numbers — pricing, marketing spend, seasonality.</li>
+          <li><strong>Confidence intervals on every output</strong> — a forecast is a range, and we show you the range, not just the midpoint.</li>
+          <li><strong>Back-tested against your own history</strong> before it's ever used to predict your future.</li>
+        </ul>
+      </div>
+      <div class="ci-box">
+        <span class="mono">Example output</span>
+        <p>Projected inventory need for SKU-2291, next 30 days:</p>
+        <div class="range">1,240 <span>units</span></div>
+        <p style="margin-top:14px; margin-bottom:0;">90% confidence range: <strong style="color:#fff;">1,080 – 1,410 units</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section id="use-cases">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built around the reorder calls that often go wrong</h2>
+        <p>Three common moments where a real forecast changes what you'd otherwise order on instinct.</p>
+      </div>
+      <div class="cases">
+        <div class="case-card">
+          <span class="case-tag">Seasonal products</span>
+          <h3>Pre-season stock planning</h3>
+          <p>Know how much of each seasonal SKU to order before the season starts, with a confidence range that tells you how much buffer to actually carry.</p>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">Best sellers</span>
+          <h3>Avoiding stockouts on top SKUs</h3>
+          <p>Get an early warning when a fast-moving product is trending toward a stockout, in time to reorder before you lose sales.</p>
+        </div>
+        <div class="case-card">
+          <span class="case-tag">New product launches</span>
+          <h3>First-order sizing for new SKUs</h3>
+          <p>Estimate initial order quantities for new products using demand patterns from comparable items in your catalog.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT HELPS -->
+  <section id="success-stories">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How ForecastEdge helps, in practice</h2>
+        <p>A few examples of the kind of decisions ForecastEdge is built to support.</p>
+      </div>
+      <div class="stories-grid">
+        <div class="story-card">
+          <div class="story-avatar" style="background:#1E9E8C;">01</div>
+          <div class="story-name">Home goods retailer</div>
+          <p class="story-quote">Instead of guessing how much of a best-selling item to reorder, a confidence range shows how much buffer stock actually makes sense.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-avatar" style="background:#E8593B;">02</div>
+          <div class="story-name">Apparel brand</div>
+          <p class="story-quote">Ahead of a busy season, a per-SKU demand forecast replaces a rough spreadsheet estimate for how much stock to bring in.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-avatar" style="background:#0E2233;">03</div>
+          <div class="story-name">Beauty retailer</div>
+          <p class="story-quote">Launching a new product, first-order quantity is estimated from demand patterns of comparable items already in the catalog.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-avatar" style="background:#1E9E8C;">04</div>
+          <div class="story-name">Electronics reseller</div>
+          <p class="story-quote">Reducing overstock on slow-moving items frees up cash that would otherwise sit tied up in unsold inventory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="band band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Simple pricing, based on how much you forecast</h2>
+        <p>Start free, upgrade as your data and forecasting needs grow.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <span class="plan-name">Starter</span>
+          <div class="price">$0<span>/mo</span></div>
+          <p class="plan-desc">For testing the waters with a single product line.</p>
+          <ul class="plan-feats">
+            <li>1 active forecast</li>
+            <li>Up to 12 months of history</li>
+            <li>Monthly refresh</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#contact" class="plan-btn">Start free</a>
+        </div>
+        <div class="price-card featured">
+          <span class="plan-name">Growth</span>
+          <div class="price">$149<span>/mo</span></div>
+          <p class="plan-desc">For stores making regular reorder decisions across their catalog.</p>
+          <ul class="plan-feats">
+            <li>Up to 500 SKUs</li>
+            <li>Full history, unlimited backtest</li>
+            <li>Weekly refresh</li>
+            <li>Shopify &amp; WooCommerce integrations</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="plan-btn">Get started</a>
+        </div>
+        <div class="price-card">
+          <span class="plan-name">Enterprise</span>
+          <div class="price">Custom</div>
+          <p class="plan-desc">For multi-warehouse retailers with complex catalogs.</p>
+          <ul class="plan-feats">
+            <li>Unlimited forecasts</li>
+            <li>Daily refresh</li>
+            <li>Custom model tuning</li>
+            <li>Dedicated analyst support</li>
+          </ul>
+          <a href="#contact" class="plan-btn">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2 style="font-size:30px; margin-bottom:18px;">Why we built this</h2>
+        <p>Most inventory tools are built by engineers who bolt on a basic reorder-point formula as an afterthought. ForecastEdge started from the opposite direction: real statistical forecasting methods first, wrapped in something a small e-commerce store can actually use without a data science degree.</p>
+        <p>We believe every small retailer deserves the same demand-forecasting rigor as a large enterprise — without the headcount that usually comes with it.</p>
+      </div>
+      <div class="founder-card">
+        <span class="role">Founder</span>
+        <h3>Ifeoma Maryanne Ndibe</h3>
+        <p>Statistician who upskilled into data science, combining classical forecasting methods with modern machine learning to bring real demand-forecasting rigor to small e-commerce retailers who've never had access to it before.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="band band-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>From the blog</h2>
+        <p>Notes on inventory forecasting, uncertainty, and ordering without guesswork.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <span class="blog-cat">Forecasting</span>
+          <h3>Why a single-number reorder guess is quietly costing you</h3>
+          <p>The case for always asking for the range, not just the estimate.</p>
+        </div>
+        <div class="blog-card">
+          <span class="blog-cat">Inventory</span>
+          <h3>How much safety stock is actually enough?</h3>
+          <p>A statistical approach to the buffer question every small retailer asks.</p>
+        </div>
+        <div class="blog-card">
+          <span class="blog-cat">Seasonal planning</span>
+          <h3>Forecasting demand for a product with no sales history yet</h3>
+          <p>What to do when you're launching something brand new.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2>Get a free forecast</h2>
+        <p>Tell us a bit about your business and what you'd like to forecast. We'll follow up to set up a demo using your own data.</p>
+        <div class="contact-detail"><a href="mailto:ifeomandibe@forecastedge.cloud" style="color:inherit; text-decoration:none;">ifeomandibe@forecastedge.cloud</a></div>
+        <div class="contact-detail">2 Ozomena Onyeali Close, Nodu Okpuno, Awka, Anambra State, Nigeria</div>
+        <div class="contact-detail">Response within 1 business day</div>
+      </div>
+      <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <div>
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Company email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="company">Company name</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div>
+            <label for="size">Company size</label>
+            <select id="size" name="size">
+              <option>1–10 employees</option>
+              <option>11–50 employees</option>
+              <option>51–200 employees</option>
+              <option>200+ employees</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="message">What would you like to forecast?</label>
+          <textarea id="message" name="message" placeholder="e.g. Monthly revenue for the next two quarters"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Request a demo</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <svg class="logo-mark" viewBox="0 0 20 20" fill="none">
+            <path d="M2 15L7 8L11 12L18 3" stroke="#1E9E8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          ForecastEdge
+        </a>
+        <p>Inventory forecasts with confidence intervals, not guesswork — built for small e-commerce sellers.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#how-it-works">Methodology</a></li>
+          <li><a href="#use-cases">Use cases</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ForecastEdge. All rights reserved.</span>
+      <span class="mono">Forecasts, not fortune-telling.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
 
